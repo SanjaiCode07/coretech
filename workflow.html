@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sri Durgai Core Tech Production Workflow - Detailed 6-stage manufacturing process for Shell Cores, Shell Moulds, and Resin Coated Sand with strict quality controls.">
+  <meta name="keywords" content="shell core manufacturing process, resin coated sand production, quality control foundry, Sri Durgai Core Tech workflow">
+  <meta name="author" content="Sri Durgai Core Tech">
+  <title>Production Workflow &amp; Quality Controls | Sri Durgai Core Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <style>
+    /* ---- Workflow Page Specific Styles ---- */
+    .workflow-hero {
+      background: var(--charcoal);
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.04) 0%, transparent 60%),
+        radial-gradient(rgba(255,255,255,0.06) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, rgba(26,26,26,0.98) 0%, rgba(26,26,26,0.85) 50%, rgba(122,150,41,0.4) 100%);
+      background-size: 100% 100%, 24px 24px, cover;
+      background-position: center;
+      padding: 160px 0 100px;
+      text-align: center;
+    }
+
+    .workflow-hero-label {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .workflow-hero-label::before,
+    .workflow-hero-label::after {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    .workflow-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .workflow-hero h1 span {
+      color: var(--primary);
+    }
+
+    .workflow-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    /* ---- Workflow Timeline ---- */
+    .workflow-section {
+      padding: var(--section-padding);
+      background: var(--light-grey);
+    }
+
+    .workflow-timeline {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .workflow-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 3px;
+      opacity: 0.3;
+    }
+
+    .wf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .wf-item:last-child { margin-bottom: 0; }
+
+    .wf-item:nth-child(odd) { flex-direction: row; }
+    .wf-item:nth-child(even) { flex-direction: row-reverse; }
+
+    .wf-content {
+      flex: 1;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 32px 36px;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-base);
+      border-top: 4px solid transparent;
+    }
+
+    .wf-content:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--primary);
+    }
+
+    .wf-item:nth-child(odd) .wf-content { text-align: right; }
+    .wf-item:nth-child(even) .wf-content { text-align: left; }
+
+    .wf-step-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .wf-item:nth-child(odd) .wf-step-header { flex-direction: row-reverse; justify-content: flex-start; }
+    .wf-item:nth-child(even) .wf-step-header { flex-direction: row; }
+
+    .wf-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(164,198,57,0.12);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-base);
+    }
+
+    .wf-content:hover .wf-icon {
+      background: var(--gradient-primary);
+    }
+
+    .wf-icon svg {
+      width: 26px;
+      height: 26px;
+      color: var(--primary);
+      transition: var(--transition-base);
+    }
+
+    .wf-content:hover .wf-icon svg {
+      color: var(--charcoal);
+    }
+
+    .wf-step-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--charcoal);
+    }
+
+    .wf-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .wf-checks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wf-checks li {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--mid-grey);
+    }
+
+    .wf-item:nth-child(odd) .wf-checks li { flex-direction: row-reverse; }
+
+    .wf-checks li:last-child { border-bottom: none; }
+
+    .wf-checks li::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      flex-shrink: 0;
+    }
+
+    .wf-number {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 52px;
+      height: 52px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      box-shadow: var(--shadow-primary);
+      border: 4px solid var(--light-grey);
+      z-index: 2;
+      top: 24px;
+    }
+
+    .wf-spacer { flex: 1; }
+
+    /* ---- QA Standards ---- */
+    .qa-standards {
+      padding: var(--section-padding);
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qa-standards::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(164,198,57,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .qa-standards .section-title { color: var(--white); }
+    .qa-standards .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .qa-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .qa-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: all var(--transition-base);
+    }
+
+    .qa-card:hover {
+      background: rgba(164,198,57,0.08);
+      border-color: rgba(164,198,57,0.2);
+      transform: translateY(-4px);
+    }
+
+    .qa-card-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(164,198,57,0.15);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .qa-card-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+
+    .qa-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .qa-card-text {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    .qa-card-metric {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(164,198,57,0.15);
+      border-radius: 50px;
+      padding: 5px 14px;
+    }
+
+    .qa-card-metric span:first-child {
+      font-family: var(--font-tech);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .qa-card-metric span:last-child {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    .qa-certifications {
+      text-align: center;
+      padding: 40px;
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+    }
+
+    .qa-certifications h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .qa-certifications p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ---- CTA Section ---- */
+    .workflow-cta {
+      padding: 80px 0;
+      background: var(--light-grey);
+      text-align: center;
+    }
+
+    .workflow-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .workflow-cta p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .workflow-cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 768px) {
+      .workflow-hero { padding: 130px 0 70px; }
+
+      .workflow-timeline::before { left: 26px; }
+
+      .wf-item,
+      .wf-item:nth-child(odd),
+      .wf-item:nth-child(even) {
+        flex-direction: row !important;
+        gap: 20px;
+        padding-left: 60px;
+      }
+
+      .wf-spacer { display: none; }
+
+      .wf-number { left: 26px; transform: translateX(-50%); }
+
+      .wf-content,
+      .wf-item:nth-child(odd) .wf-content,
+      .wf-item:nth-child(even) .wf-content {
+        text-align: left;
+      }
+
+      .wf-step-header,
+      .wf-item:nth-child(odd) .wf-step-header,
+      .wf-item:nth-child(even) .wf-step-header {
+        flex-direction: row !important;
+      }
+
+      .wf-checks li,
+      .wf-item:nth-child(odd) .wf-checks li {
+        flex-direction: row !important;
+      }
+
+      .qa-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="45" height="28" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="50" cy="30" rx="48" ry="28" fill="#A4C639" stroke="#fff" stroke-width="2"/>
+          <text x="50" y="25" text-anchor="middle" fill="white" font-family="serif" font-size="14" font-weight="bold">Sri Durgai</text>
+          <text x="50" y="42" text-anchor="middle" fill="white" font-family="serif" font-size="9">Core Tech &amp; Coated Sand</text>
+        </svg>
+        <div class="nav-logo-text">
+          <span class="brand-name">Sri Durgai Core Tech</span>
+          <span class="brand-tagline">Shell Cores &amp; Coated Sands</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="why-choose.html" class="nav-link">Why Us</a></li>
+        <li><a href="index.html#products" class="nav-link">Products</a></li>
+        <li><a href="index.html#industries" class="nav-link">Industries</a></li>
+        <li><a href="workflow.html" class="nav-link active">Process</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li class="nav-cta"><a href="index.html#quote" class="btn btn-primary btn-sm">Get Quote</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="workflow-hero">
+    <div class="container">
+      <div class="workflow-hero-label">Production Excellence</div>
+      <h1>Our <span>Production Workflow</span><br>&amp; Quality Standards</h1>
+      <p>A transparent look at our 6-stage manufacturing process — built on strict quality protocols, advanced machinery, and 20+ years of foundry expertise.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#quote" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Request a Quote
+        </a>
+        <a href="index.html#products" class="btn btn-outline btn-lg">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Timeline -->
+  <section class="workflow-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Step-by-Step</div>
+        <h2 class="section-title">6-Stage Manufacturing Process</h2>
+        <p class="section-subtitle">From premium raw material sourcing to verified product dispatch — every step is controlled for consistency and quality.</p>
+      </div>
+
+      <div class="workflow-timeline">
+
+        <!-- Step 1 -->
+        <div class="wf-item reveal">
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <div class="wf-step-title">Raw Material Selection</div>
+            </div>
+            <p class="wf-desc">We source premium-grade silica sand with verified AFS grain fineness numbers, phenolic resins from certified suppliers, and additives that meet strict industry standards before any batch enters production.</p>
+            <ul class="wf-checks">
+              <li>Silica purity &gt; 98% verified</li>
+              <li>Grain fineness (AFS) sieve analysis</li>
+              <li>Resin viscosity and pot-life testing</li>
+              <li>Supplier-certified batch documentation</li>
+            </ul>
+          </div>
+          <div class="wf-number">01</div>
+          <div class="wf-spacer"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wf-item reveal">
+          <div class="wf-spacer"></div>
+          <div class="wf-number">02</div>
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="wf-step-title">Resin Coating Process</div>
+            </div>
+            <p class="wf-desc">Sand grains are heated and precisely coated with phenolic resin in a controlled hot-coat process. Temperature, resin ratio, and mixing time are all computer-monitored to achieve uniform coating thickness and optimal bond strength.</p>
+            <ul class="wf-checks">
+              <li>Hot-coat process at 140–160°C</li>
+              <li>Resin content: 1.5–3.5% by weight</li>
+              <li>Uniform grain coating confirmed visually and by test</li>
+              <li>Tensile strength target: &gt; 25 kg/cm²</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="wf-item reveal">
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="wf-step-title">Shell Core Manufacturing</div>
+            </div>
+            <p class="wf-desc">Coated sand is transferred into heated metal dies (tooling) at 230–270°C, where it cures in 15–60 seconds to form precision shell cores. Shell thickness is controlled to ±1 mm for repeatable dimensional accuracy every batch.</p>
+            <ul class="wf-checks">
+              <li>Die temperature: 230–270°C controlled</li>
+              <li>Curing time optimized per core geometry</li>
+              <li>Wall thickness: ± 1 mm tolerance</li>
+              <li>Gas evolution measured &lt; 15 ml/g</li>
+            </ul>
+          </div>
+          <div class="wf-number">03</div>
+          <div class="wf-spacer"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="wf-item reveal">
+          <div class="wf-spacer"></div>
+          <div class="wf-number">04</div>
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div class="wf-step-title">Shell Mould Production</div>
+            </div>
+            <p class="wf-desc">Shell moulds are produced in split halves using matched metal patterns, then bonded with a high-strength adhesive. Permeability and hardness tests are run on each mould set to ensure casting reliability across ferrous and non-ferrous alloys.</p>
+            <ul class="wf-checks">
+              <li>Split-half mould bonding with certified adhesive</li>
+              <li>Permeability tested per mould lot</li>
+              <li>Hardness (Brinell) checks on sample moulds</li>
+              <li>Defect rate target: &lt; 0.5%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="wf-item reveal">
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div class="wf-step-title">Quality Inspection &amp; Audit</div>
+            </div>
+            <p class="wf-desc">Every finished batch undergoes a multi-point quality inspection before approval for dispatch. Dimensional, tensile, and visual checks are performed. Non-conforming products are segregated and recycled, never shipped.</p>
+            <ul class="wf-checks">
+              <li>Calibrated caliper dimensional audit</li>
+              <li>Tensile strength: minimum 20 kg/cm² (cores)</li>
+              <li>Surface finish check: Ra 3.2–6.3 µm</li>
+              <li>Peel-back resistance and visual crack inspection</li>
+              <li>Batch-wise test records maintained</li>
+            </ul>
+          </div>
+          <div class="wf-number">05</div>
+          <div class="wf-spacer"></div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="wf-item reveal">
+          <div class="wf-spacer"></div>
+          <div class="wf-number">06</div>
+          <div class="wf-content">
+            <div class="wf-step-header">
+              <div class="wf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <div class="wf-step-title">Packaging &amp; Dispatch</div>
+            </div>
+            <p class="wf-desc">Approved products are carefully packed in customized corrugated packaging with anti-moisture liners. Each shipment is labelled with batch number, product spec, and date of manufacture. We offer Pan-India logistics with reliable third-party freight partners.</p>
+            <ul class="wf-checks">
+              <li>Anti-moisture and shock-resistant packaging</li>
+              <li>Batch number and QC cert included per shipment</li>
+              <li>Pan-India delivery: 3–7 working days</li>
+              <li>Real-time tracking provided on request</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Assurance Standards -->
+  <section class="qa-standards">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Quality Assurance</div>
+        <h2 class="section-title">Our Testing &amp; Quality Standards</h2>
+        <p class="section-subtitle">Multi-stage testing at every production milestone ensures consistent, specification-grade products in every batch.</p>
+      </div>
+      <div class="qa-grid">
+        <div class="qa-card reveal" style="transition-delay:0.05s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="qa-card-title">Tensile Strength Testing</h3>
+          <p class="qa-card-text">Every batch is tested on a calibrated tensile testing machine. Minimum thresholds are enforced before any product is approved for dispatch.</p>
+          <div class="qa-card-metric">
+            <span>&gt; 20</span>
+            <span>kg/cm² (cores)</span>
+          </div>
+        </div>
+        <div class="qa-card reveal" style="transition-delay:0.1s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="qa-card-title">Sieve Analysis (AFS)</h3>
+          <p class="qa-card-text">Incoming sand and outgoing coated sand batches are both sieve-tested to confirm grain fineness is within the specified AFS range for each product grade.</p>
+          <div class="qa-card-metric">
+            <span>50–70</span>
+            <span>AFS range</span>
+          </div>
+        </div>
+        <div class="qa-card reveal" style="transition-delay:0.15s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3 class="qa-card-title">Dimensional Accuracy</h3>
+          <p class="qa-card-text">Shell cores and moulds are measured with calibrated vernier calipers and go/no-go gauges to verify critical dimensions before release.</p>
+          <div class="qa-card-metric">
+            <span>±0.5</span>
+            <span>mm tolerance</span>
+          </div>
+        </div>
+        <div class="qa-card reveal" style="transition-delay:0.2s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="qa-card-title">Gas Evolution Testing</h3>
+          <p class="qa-card-text">Gas evolution during casting is a critical parameter. We test each resin grade batch to ensure low-gas output, preventing porosity defects in the final casting.</p>
+          <div class="qa-card-metric">
+            <span>&lt; 15</span>
+            <span>ml/g gas evolved</span>
+          </div>
+        </div>
+        <div class="qa-card reveal" style="transition-delay:0.25s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="qa-card-title">Peel-Back Resistance</h3>
+          <p class="qa-card-text">Shell core halves are manually peel-tested to ensure adequate bond strength at the parting line, preventing core break during mould assembly.</p>
+          <div class="qa-card-metric">
+            <span>100%</span>
+            <span>batch sampling</span>
+          </div>
+        </div>
+        <div class="qa-card reveal" style="transition-delay:0.3s">
+          <div class="qa-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3 class="qa-card-title">Visual &amp; Surface Inspection</h3>
+          <p class="qa-card-text">All finished products undergo trained operator visual inspection for cracks, inclusions, surface pitting, and parting-line flash before packaging.</p>
+          <div class="qa-card-metric">
+            <span>&lt; 0.5%</span>
+            <span>avg. defect rate</span>
+          </div>
+        </div>
+      </div>
+      <div class="qa-certifications reveal">
+        <h3>Certifications &amp; Compliance</h3>
+        <p>We are committed to achieving and maintaining industry-recognized quality certifications. Certification details will be updated as obtained.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="workflow-cta">
+    <div class="container reveal">
+      <h2>Ready to Partner with Us?</h2>
+      <p>Reach out for custom pricing, technical datasheets, or to discuss your specific foundry requirements.</p>
+      <div class="workflow-cta-btns">
+        <a href="index.html#quote" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Request a Quote
+        </a>
+        <a href="index.html#contact" class="btn btn-outline-dark btn-lg">Contact Us</a>
+        <a href="index.html" class="btn btn-dark btn-lg">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="42" height="26" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="50" cy="30" rx="48" ry="28" fill="#A4C639" stroke="#fff" stroke-width="2"/>
+              <text x="50" y="25" text-anchor="middle" fill="white" font-family="serif" font-size="14" font-weight="bold">Sri Durgai</text>
+              <text x="50" y="42" text-anchor="middle" fill="white" font-family="serif" font-size="9">Core Tech &amp; Coated Sand</text>
+            </svg>
+            <span class="footer-logo-text">Sri Durgai Core Tech<br>&amp; Coated Sands</span>
+          </div>
+          <p class="footer-desc">Leading manufacturer of Shell Cores, Shell Moulds, and Resin Coated Sand with over 14 years of manufacturing excellence in Coimbatore, Tamil Nadu.</p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contact Info</h3>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Kurumbapalayam, Sathy Road, Coimbatore, Tamil Nadu, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@sridurgaicoretech.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2024 Sri Durgai Core Tech &amp; Sri Durgai Coated Sands. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- WhatsApp Float -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <a href="https://wa.me/919876543210" target="_blank" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
